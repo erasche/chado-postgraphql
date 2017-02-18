@@ -1,0 +1,53 @@
+postgraphql:
+    image: erasche/postgraphql
+    ports:
+        - "9999:5000"
+    environment:
+        DB_GRAPHQL_PATH: "/graphql"
+        DB_GRAPHIQL_PATH: "/graphiql"
+        PG_SECRET: "deadbeefcafe"
+        PGUSER: postgres
+        PGPASSWORD: postgres
+        PGHOST: postgres
+        PGPORT: 5432
+        PGDATABASE: postgres
+        DB_SCHEMA: "public"
+    links:
+        - "chado:postgres"
+
+postgraphql-refseqs:
+    build: refseqs
+    ports:
+        - "9997:5000"
+    environment:
+        PGUSER: postgres
+        PGPASSWORD: postgres
+        PGHOST: postgres
+        PGPORT: 5432
+        PGDATABASE: postgres
+    links:
+        - "chado:postgres"
+
+postgrest:
+    image: erasche/postgrest:latest
+    #image: postgrest
+    ports:
+        - "9998:3000"
+    environment:
+        DB_URI: "postgres://postgres:postgres@postgres:5432/postgres"
+        DB_SCHEMA: public
+        DB_ANON_ROLE: postgres
+        DB_POOL: 10
+        DB_MAXROWS: 1000
+        JWT_SECRET: "deadbeefcafe"
+    links:
+        - "chado:postgres"
+
+chado:
+    image: erasche/chado:1.31-jenkins97-pg9.5
+    ports:
+        - 5432:5432
+    environment:
+        INSTALL_YEAST_DATA: 1
+    volumes:
+        - "./chado:/var/lib/postgresql/data"

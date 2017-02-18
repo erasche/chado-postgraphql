@@ -1,0 +1,86 @@
+{
+  findFeatures(organismName:"yeast",refseq:"chrI", sotype:"gene", fmin:1, fmax:1000) {
+    edges {
+      node {
+        name
+        dbxrefId
+        uniquename
+        cvtermByTypeId {
+          name
+        }
+        isAnalysis
+        isObsolete
+        featurelocsByFeatureId {
+          nodes {
+            fmax
+            fmin
+            strand
+            isFminPartial
+            isFmaxPartial
+          }
+        }
+        featureRelationshipsByObjectId {
+          edges {
+            node {
+              featureBySubjectId {
+                name
+                dbxrefId
+                uniquename
+                cvtermByTypeId {
+                  name
+                }
+                isAnalysis
+                isObsolete
+                featurelocsByFeatureId {
+                  nodes {
+                    fmax
+                    fmin
+                    strand
+                    isFminPartial
+                    isFmaxPartial
+                  }
+                }
+                featureRelationshipsByObjectId {
+                  edges {
+                    node {
+                      featureBySubjectId {
+                        name
+                        dbxrefId
+                        uniquename
+                        cvtermByTypeId {
+                          name
+                        }
+                        isAnalysis
+                        isObsolete
+                        featurelocsByFeatureId {
+                          nodes {
+                            fmax
+                            fmin
+                            strand
+                            isFminPartial
+                            isFmaxPartial
+                          }
+                        }
+                        featureRelationshipsByObjectId {
+                          edges {
+                            node {
+                              featureBySubjectId {
+                                name
+                                dbxrefId
+                                uniquename
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
