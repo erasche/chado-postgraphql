@@ -1,4 +1,10 @@
 {
+  sequence: findSequence(argorgname:"yeast",argrefseq:"chrI", argfmin: 0, argflen: 100) 
+}
+
+
+
+{
   findFeatures(organismName:"yeast",refseq:"chrI", sotype:"gene", fmin:1, fmax:1000) {
     edges {
       node {
