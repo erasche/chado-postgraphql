@@ -1,6 +1,10 @@
 # Chado-PostGraphQL
 
-Repo for connecting postgraphql to chado. Some custom SQL is needed to expose two search functions that work well:
+Repo for connecting postgraphql to chado. See
+[https://github.com/erasche/jbrowse-chado-postgraphql](https://github.com/erasche/jbrowse-chado-postgraphql)
+for how this is used.
+
+Some custom SQL is needed to expose two search functions that work well:
 
 ```
 function find_features(argOrgName varchar, argRefseq text, argSoType text, argFmin int, argFmax int) returns setof feature
@@ -9,7 +13,7 @@ function find_sequence(argOrgName varchar, argRefseq text, argFmin int, argFlen 
 
 These two functions allow for 1) fetching top-level features (and then recursing into them using GraphQL), 2) fetching sequence data
 
-The functions need to be loaded from the sql file INTO the database, before launching PostGraphQL
+The functions need to be loaded from the sql file INTO the database, before launching PostGraphQL.
 
 ## Example Queries
 
